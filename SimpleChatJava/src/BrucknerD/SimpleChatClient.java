@@ -11,10 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.*;
@@ -134,17 +131,6 @@ public class SimpleChatClient extends Application {
 	 * 
 	 * Sendet die Nachricht an den Outputstream 
 	 */
-	
-	public void sendmes(String input){
-		writer = new PrintWriter(out);
-		writer.write(input + "\n");
-		writer.flush();
-		
-	}
-    public void showClients(String Client){
-        String outputs = gclient.getText()+ Client + "\n";
-        gclient.setText(outputs);
-    }
 
     
     public void showtext(String input) {

@@ -1,8 +1,8 @@
 package BrucknerD;
 import java.awt.Dimension;
-import java.awt.event.*;
+
 import javax.swing.*;
-import javax.swing.event.*;
+
 
 
 /**
@@ -19,7 +19,7 @@ public class ServerGUI extends JPanel {
 	private static ServerGUI gui;
     private JTextArea oberflaeche;
     private JTextArea aussehen;
-    private ChatServerSocket se;
+ 
  
     public ServerGUI() {
     	gui = this;
@@ -58,7 +58,7 @@ public class ServerGUI extends JPanel {
    
     /**
      * 
-     * @param input für die GUI
+     * @param input fuer die GUI
      * 
      * Zeigt die Nachricht in der GUI an
      * 

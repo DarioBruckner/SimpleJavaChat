@@ -179,20 +179,6 @@ public class ChatServerSocket {
 
 
 	
-	public void disconnectClients() {
-		try {
-			server.close();
-			server = new ServerSocket(5050);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
-
-
-
-	
 	/**
 	 * 
 	 * @author Dario
