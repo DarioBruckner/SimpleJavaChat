@@ -14,45 +14,41 @@ import javax.swing.JFrame;
  * 
  * @author Dario
  *
- * ChatClientSocket enthält alle Methoden für das Senden und Empfangen der Nachrichten für Clients
+ * ChatClientSocket enthaelt alle Methoden furr das Senden und Empfangen der Nachrichten fuer Clients
  * 
  * 
  * 
  */
-public class ChatClientSocket extends JFrame{
+public class ChatClientSocket {
 	Socket client;
 	PrintWriter writer;
 	BufferedReader reader;
-	ClientGUI f;
-	ChatClientSocket cli;
-	ServerGUI gui = ServerGUI.getGui();
-	
+	ClientFxGui fb;
+	ServerFxGui gui = ServerFxGui.getGui();
+	String [] args;
+	SimpleChatClient i;
 	
 	public ChatClientSocket() {
 		
 	}
 	
-	public ChatClientSocket(int a) {
-		cli = new ChatClientSocket();
-		cli.startClient(cli);
+	public ChatClientSocket(SimpleChatClient i) {
+		//cli = new ChatClientSocket();
+		this.i = i;
+
+		startClient();
 	}
 	
 	/**
 	 * 
-	 * @param g Klassenobjekt in der ClientGUI auf diese Methoden zuzugreifen
+	 *
 	 * 
-	 * Öffnet die GUI und Startet den MessageListener Thread
+	 * oeffnet die GUI und Startet den MessageListener Thread
 	 * 
 	 */
 	
-	public void startClient(ChatClientSocket g){
-		f = new ClientGUI(g);
-		ChatClientSocket p = new ChatClientSocket();
-		p.add(f);
-		p.setSize(650, 420);
-		p.setVisible(true);
-	
-		
+	public void startClient(){
+
 		if(!createClient()){
 			System.exit(0);
 		}
@@ -64,7 +60,7 @@ public class ChatClientSocket extends JFrame{
 	
 	/**
 	 * 
-	 * @return gibt den Status zurück ob der Server Gestartet werden konnte.
+	 * @return gibt den Status zur?ck ob der Server Gestartet werden konnte.
 	 * 
 	 * Erstellt den ClientSocket und verbindet ihn mit dem Server
 	 */
@@ -80,7 +76,7 @@ public class ChatClientSocket extends JFrame{
 			//MessageWriter
 			writer = new PrintWriter(client.getOutputStream());
 			
-			
+
 			return true;
 			
 			
@@ -125,7 +121,10 @@ public class ChatClientSocket extends JFrame{
 	 * 
 	 * Thread um Nachrichten vom Server zu bekommen und diese auf der GUI anzuzeige
 	 */
-	
+
+
+
+
 	public class MessagefromServerListener implements Runnable{
 
 		@Override
@@ -135,12 +134,13 @@ public class ChatClientSocket extends JFrame{
 			try {
 				while((mes = reader.readLine()) != null) {
 					//Zeigt die Nachricht an
-					f.showtext(mes);
+					i.showtext(mes);
+
 				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-				f.showtext("FEHLER");
+				i.showtext("FEHLER");
 				
 			}
 			

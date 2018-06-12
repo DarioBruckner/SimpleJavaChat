@@ -16,18 +16,17 @@ import java.util.Iterator;
  * @author Dario
  * @version 1.03
  * 
- * Klasse ChatServerSocket wird verwedet um alle Serverfunktionen auszuführen 
+ * Klasse ChatServerSocket wird verwedet um alle Serverfunktionen auszufuehren
  * 
  */
 
 
 public class ChatServerSocket {
 	private ServerSocket server;
-	ServerGUI gui = ServerGUI.getGui();
+	SimpleChatServer serv;
 	ArrayList<PrintWriter> list_clientWriter;
 	ArrayList<String> list_clients = new ArrayList<String>();
-	
-	
+
 	
 	/**
 	 * Standartconstructor
@@ -39,29 +38,23 @@ public class ChatServerSocket {
 	
 	
 	/**
-	 * 
-	 * @param Servergui
-	 * 
-	 * Constructor um zu überprüfen ob der Server richtig gestartet worden ist
+	 *
+	 * @param serv
+	 *
+	 * Constructor um zu ueberpruefen ob der Server richtig gestartet worden ist
 	 * 
 	 */
 	
-	public ChatServerSocket(ServerGUI gui) {
-		ChatServerSocket s = new ChatServerSocket();
-		gui = new ServerGUI();
-		this.gui = gui;	
-		
-		boolean ser = s.server();
-		
-		if(ser == true) {
-			s.acceptclients();
+	public ChatServerSocket(SimpleChatServer serv) {
+		this.serv = serv;
+
+		if(server()) {
+			System.out.println("Server Start");
+			acceptclients();
 	  	}else {
 	  		System.out.println("Fehler bei dem Server");
 	 	}
 	}
-	
-	
-	
 	
 	/**
 	 * @param /
@@ -78,7 +71,6 @@ public class ChatServerSocket {
 			
 			//ArrayList initalisierung
 			list_clientWriter = new ArrayList<PrintWriter>();
-			
 			
 			return true;
 			
@@ -104,24 +96,35 @@ public class ChatServerSocket {
 	 */
 	
 	public void acceptclients() {
-		while(true){
-			try {
-				//Client beim Server accepten
-				Socket client = server.accept();
+		System.out.println("connect");
 
-				//Die Printwriter Objekte erstellen und in die Arraylist speichern
-				PrintWriter writ = new PrintWriter(client.getOutputStream());
-				list_clientWriter.add(writ);
-				
-				
-				//Threat erstellen und Starten
-				Thread clientThread = new Thread(new Clienthandler(client));		
-				clientThread.start();
-				
-			}catch (IOException e) {
-				e.printStackTrace();
+
+		Thread r = new Thread() {
+			@Override
+			public void run() {
+				while(true){
+					try {
+						//Client beim Server accepten
+						Socket client = server.accept();
+
+						//Die Printwriter Objekte erstellen und in die Arraylist speichern
+						PrintWriter writ = new PrintWriter(client.getOutputStream());
+						list_clientWriter.add(writ);
+
+
+						//Threat erstellen und Starten
+						Thread clientThread = new Thread(new Clienthandler(client));
+						clientThread.start();
+
+					}catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
 			}
-		}
+		};
+		r.start();
+
+
 	}
 	
 	
@@ -169,13 +172,12 @@ public class ChatServerSocket {
 			ret += c;
 		}
 		if(!list_clients.contains(ret)) {
-			gui.showClients(ret);
+			serv.showClients(ret);
 			list_clients.add(ret);
 		}
 	}
 
 
-	
 	
 	public void disconnectClients() {
 		try {
@@ -185,10 +187,11 @@ public class ChatServerSocket {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
-	
-	
+
+
+
 	
 	/**
 	 * 
@@ -234,7 +237,7 @@ public class ChatServerSocket {
 					if(mes != "EXIT") {
 						sendtoClients(mes);
 						clientFilter(mes);
-						gui.texttogui(mes);
+						serv.texttogui(mes);
 					}else {
 						
 					}
