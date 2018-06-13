@@ -1,5 +1,7 @@
 package BrucknerD;
 
+import javafx.application.Platform;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -120,6 +122,11 @@ public class ChatClientSocket {
 		running = false;
 	}
 
+	public void shutdownServer(){
+
+		running = false;
+		i.shutGUI();
+	}
 
 
 	/**
@@ -144,9 +151,12 @@ public class ChatClientSocket {
 					}catch (SocketTimeoutException e) {
 						continue;
 					}
-					//Zeigt die Nachricht an
-					i.showtext(mes);
-
+					if(mes.equals("EXIT")){
+						shutdownServer();
+					}else {
+						//Zeigt die Nachricht an
+						i.showtext(mes);
+					}
 				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block

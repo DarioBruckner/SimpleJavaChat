@@ -132,7 +132,7 @@ public class SimpleChatServer extends Application {
     }
 
     public void closeProgramm() throws InterruptedException {
-
+        c.sendtoClients("EXIT");
         try {
             c.server.close();
         } catch (IOException e) {
@@ -140,9 +140,12 @@ public class SimpleChatServer extends Application {
         }
 
         c.r.join();
-
         c.shutdown();
-        c.clientThread.join();
+        try {
+            c.clientThread.join();
+        }catch(NullPointerException e){
+
+        }
     }
 
 }

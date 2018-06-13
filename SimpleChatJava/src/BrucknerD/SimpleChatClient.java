@@ -1,6 +1,7 @@
 package BrucknerD;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -143,6 +144,10 @@ public class SimpleChatClient extends Application {
 	    cl.t.join();
     }
 
+    public void shutGUI(){
+        Platform.exit();
+    }
+
 	
 	/**
 	 * @author Dario
@@ -155,5 +160,6 @@ public class SimpleChatClient extends Application {
     public void showtext(String input) {
         String outputs = output.getText() + input + "\n";
         output.setText(outputs);
+
     }
 }

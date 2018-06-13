@@ -15,8 +15,8 @@
       <file leaf-file-name="ChatClientSocket.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SimpleChatJava/src/BrucknerD/ChatClientSocket.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="118" column="33" selection-start-line="118" selection-start-column="33" selection-end-line="118" selection-end-column="33" />
+            <state relative-caret-position="243">
+              <caret line="127" column="20" selection-start-line="127" selection-start-column="20" selection-end-line="127" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -24,10 +24,12 @@
       <file leaf-file-name="SimpleChatClient.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SimpleChatJava/src/BrucknerD/SimpleChatClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="141" column="39" selection-start-line="141" selection-start-column="39" selection-end-line="141" selection-end-column="39" />
+            <state relative-caret-position="321">
+              <caret line="162" selection-start-line="162" selection-end-line="162" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#2963#2964#0" expanded="true" />
+                <element signature="e#2994#2995#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -36,14 +38,8 @@
       <file leaf-file-name="ChatServerSocket.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SimpleChatJava/src/BrucknerD/ChatServerSocket.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="248" column="59" selection-start-line="248" selection-start-column="59" selection-end-line="248" selection-end-column="59" />
-              <folding>
-                <element signature="e#1952#2512#0" expanded="true" />
-                <element signature="e#2511#2512#0" expanded="true" />
-                <element signature="e#3611#3612#0" expanded="true" />
-                <element signature="e#3630#3631#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="153">
+              <caret line="20" column="48" lean-forward="true" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -51,8 +47,8 @@
       <file leaf-file-name="SimpleChatServer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SimpleChatJava/src/BrucknerD/SimpleChatServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="123" column="60" lean-forward="true" selection-start-line="123" selection-start-column="60" selection-end-line="123" selection-end-column="60" />
+            <state relative-caret-position="2016">
+              <caret line="146" selection-start-line="146" selection-end-line="146" />
             </state>
           </provider>
         </entry>
@@ -79,10 +75,10 @@
         <option value="$PROJECT_DIR$/SimpleChatJava/src/BrucknerD/ServerGUI.java" />
         <option value="$PROJECT_DIR$/SimpleChatJava/src/BrucknerD/ClientFxGui.java" />
         <option value="$PROJECT_DIR$/SimpleChatJava/src/BrucknerD/ServerFxGui.java" />
-        <option value="$PROJECT_DIR$/SimpleChatJava/src/BrucknerD/SimpleChatServer.java" />
+        <option value="$PROJECT_DIR$/SimpleChatJava/src/BrucknerD/ChatServerSocket.java" />
         <option value="$PROJECT_DIR$/SimpleChatJava/src/BrucknerD/SimpleChatClient.java" />
         <option value="$PROJECT_DIR$/SimpleChatJava/src/BrucknerD/ChatClientSocket.java" />
-        <option value="$PROJECT_DIR$/SimpleChatJava/src/BrucknerD/ChatServerSocket.java" />
+        <option value="$PROJECT_DIR$/SimpleChatJava/src/BrucknerD/SimpleChatServer.java" />
       </list>
     </option>
   </component>
@@ -97,7 +93,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -121,6 +116,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -248,18 +244,18 @@
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="6" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.30206677" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.290938" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24304539" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24304539" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3990461" />
       <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3990461" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -277,12 +273,47 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/SimpleChatJava/src/BrucknerD/ChatClientSocket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="24" column="31" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SimpleChatJava/src/BrucknerD/SimpleChatClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2482">
+          <caret line="146" column="8" selection-start-line="146" selection-start-column="8" selection-end-line="146" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2963#2964#0" expanded="true" />
+            <element signature="e#2994#2995#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SimpleChatJava/src/BrucknerD/ChatServerSocket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3621">
+          <caret line="213" column="58" lean-forward="true" selection-start-line="213" selection-start-column="58" selection-end-line="213" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SimpleChatJava/src/BrucknerD/SimpleChatServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2040">
+          <caret line="141" column="19" selection-start-line="141" selection-start-column="19" selection-end-line="141" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/SimpleChatJava/src/BrucknerD/SimpleChatClient.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" selection-start-line="13" selection-end-line="13" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2963#2964#0" expanded="true" />
+            <element signature="e#2994#2995#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -291,12 +322,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3043">
           <caret line="179" selection-start-line="179" selection-end-line="179" />
-          <folding>
-            <element signature="e#1952#2512#0" expanded="true" />
-            <element signature="e#2511#2512#0" expanded="true" />
-            <element signature="e#3611#3612#0" expanded="true" />
-            <element signature="e#3630#3631#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -325,12 +350,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1207">
           <caret line="71" column="4" lean-forward="true" selection-start-line="71" selection-start-column="4" selection-end-line="71" selection-end-column="4" />
-          <folding>
-            <element signature="e#1952#2512#0" expanded="true" />
-            <element signature="e#2511#2512#0" expanded="true" />
-            <element signature="e#3611#3612#0" expanded="true" />
-            <element signature="e#3630#3631#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -341,26 +360,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SimpleChatJava/src/BrucknerD/ClientFxGui.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="38" lean-forward="true" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SimpleChatJava/src/BrucknerD/ServerFxGui.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="10" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/SimpleChatJava/src/BrucknerD/ClientFxGui.java" />
+    <entry file="file://$PROJECT_DIR$/SimpleChatJava/src/BrucknerD/ServerFxGui.java" />
     <entry file="file://$PROJECT_DIR$/SimpleChatJava/src/BrucknerD/SimpleChatClient.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
           <caret line="34" column="33" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2963#2964#0" expanded="true" />
+            <element signature="e#2994#2995#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -379,34 +388,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SimpleChatJava/src/BrucknerD/ClientFxGui.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="17" column="24" lean-forward="true" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SimpleChatJava/src/BrucknerD/ClientGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="99" column="23" selection-start-line="99" selection-start-column="22" selection-end-line="99" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SimpleChatJava/src/BrucknerD/ServerFxGui.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret lean-forward="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SimpleChatJava/src/BrucknerD/ServerGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="66" column="3" lean-forward="true" selection-start-line="66" selection-start-column="3" selection-end-line="71" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/SimpleChatJava/src/BrucknerD/ClientFxGui.java" />
+    <entry file="file://$PROJECT_DIR$/SimpleChatJava/src/BrucknerD/ClientGUI.java" />
+    <entry file="file://$PROJECT_DIR$/SimpleChatJava/src/BrucknerD/ServerFxGui.java" />
+    <entry file="file://$PROJECT_DIR$/SimpleChatJava/src/BrucknerD/ServerGUI.java" />
     <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/net/ServerSocket.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="107">
@@ -414,40 +399,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SimpleChatJava/src/BrucknerD/SimpleChatServer.java">
+    <entry file="file://$PROJECT_DIR$/SimpleChatJava/src/BrucknerD/ChatClientSocket.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="123" column="60" lean-forward="true" selection-start-line="123" selection-start-column="60" selection-end-line="123" selection-end-column="60" />
+        <state relative-caret-position="243">
+          <caret line="127" column="20" selection-start-line="127" selection-start-column="20" selection-end-line="127" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SimpleChatJava/src/BrucknerD/ChatClientSocket.java">
+    <entry file="file://$PROJECT_DIR$/SimpleChatJava/src/BrucknerD/SimpleChatServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="118" column="33" selection-start-line="118" selection-start-column="33" selection-end-line="118" selection-end-column="33" />
+        <state relative-caret-position="2016">
+          <caret line="146" selection-start-line="146" selection-end-line="146" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SimpleChatJava/src/BrucknerD/SimpleChatClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="141" column="39" selection-start-line="141" selection-start-column="39" selection-end-line="141" selection-end-column="39" />
+        <state relative-caret-position="321">
+          <caret line="162" selection-start-line="162" selection-end-line="162" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2963#2964#0" expanded="true" />
+            <element signature="e#2994#2995#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SimpleChatJava/src/BrucknerD/ChatServerSocket.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="248" column="59" selection-start-line="248" selection-start-column="59" selection-end-line="248" selection-end-column="59" />
-          <folding>
-            <element signature="e#1952#2512#0" expanded="true" />
-            <element signature="e#2511#2512#0" expanded="true" />
-            <element signature="e#3611#3612#0" expanded="true" />
-            <element signature="e#3630#3631#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="153">
+          <caret line="20" column="48" lean-forward="true" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="48" />
         </state>
       </provider>
     </entry>
