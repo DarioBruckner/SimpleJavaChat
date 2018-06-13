@@ -8,6 +8,8 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
+import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -22,7 +24,10 @@ import java.util.Iterator;
 
 
 public class ChatServerSocket {
-	private ServerSocket server;
+	ServerSocket server;
+	Thread r, clientThread;
+	static boolean running = true;
+	Socket client;
 	SimpleChatServer serv;
 	ArrayList<PrintWriter> list_clientWriter;
 	ArrayList<String> list_clients = new ArrayList<String>();
@@ -49,10 +54,10 @@ public class ChatServerSocket {
 		this.serv = serv;
 
 		if(server()) {
-			System.out.println("Server Start");
+
 			acceptclients();
 	  	}else {
-	  		System.out.println("Fehler bei dem Server");
+	  		System.exit(0);
 	 	}
 	}
 	
@@ -78,7 +83,7 @@ public class ChatServerSocket {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			
-			System.out.println("Server konnte nicht gestartet werden!");
+
 			
 			return false;
 		}
@@ -96,24 +101,27 @@ public class ChatServerSocket {
 	 */
 	
 	public void acceptclients() {
-		System.out.println("connect");
 
 
-		Thread r = new Thread() {
+
+		r = new Thread() {
 			@Override
 			public void run() {
-				while(true){
+				while(running){
 					try {
 						//Client beim Server accepten
-						Socket client = server.accept();
-
+						try {
+							client = server.accept();
+						}catch(SocketException e){
+							return;
+						}
 						//Die Printwriter Objekte erstellen und in die Arraylist speichern
 						PrintWriter writ = new PrintWriter(client.getOutputStream());
 						list_clientWriter.add(writ);
 
 
 						//Threat erstellen und Starten
-						Thread clientThread = new Thread(new Clienthandler(client));
+						clientThread = new Thread(new Clienthandler(client));
 						clientThread.start();
 
 					}catch (IOException e) {
@@ -155,7 +163,7 @@ public class ChatServerSocket {
 	}
 	
 	
-	public void clientFilter(String message) {
+	public String clientFilter(String message) {
 		String ret = "";
 		int counter = 0;
 		for(int i = 0; message.length() > i; i++) {
@@ -172,11 +180,16 @@ public class ChatServerSocket {
 			ret += c;
 		}
 		if(!list_clients.contains(ret)) {
-			serv.showClients(ret);
 			list_clients.add(ret);
+			serv.showClients(list_clients);
 		}
+
+		return ret;
 	}
 
+	public void shutdown(){
+		running = false;
+	}
 
 	
 	/**
@@ -203,8 +216,8 @@ public class ChatServerSocket {
 
 			
 			} catch (IOException e) {
-				System.out.println("fehler beider Threat Erstellung");
-				e.printStackTrace();
+
+
 			}
 		}
 		
@@ -214,26 +227,38 @@ public class ChatServerSocket {
 		@Override
 		public void run() {
 			String mes;
-				
+			String clientdel;
+
 			//auf messages Warten
 			try {
-				while((mes = reader.readLine()) != null) {
-					
-					//An alle Clients die erhaltene Nachricht
-					if(mes != "EXIT") {
-						sendtoClients(mes);
-						clientFilter(mes);
-						serv.texttogui(mes);
-					}else {
-						
+				try {
+					while(running) {
+						try{
+							mes = reader.readLine();
+							clientdel = clientFilter(mes);
+
+						}catch (SocketTimeoutException e) {
+							continue;
+						}
+						//An alle Clients die erhaltene Nachricht
+						if (!mes.equals(clientdel + ": EXIT")) {
+							sendtoClients(mes);
+							clientFilter(mes);
+							serv.texttogui(mes);
+						} else if(mes.equals(clientdel + ": EXIT")) {
+							list_clients.remove(clientdel);
+							serv.showClients(list_clients);
+						}
 					}
+				}catch(SocketException e){
+					return;
 				}
-	
-				
+
+
 			} catch (IOException e) {
-			
+
 				e.printStackTrace();
-			}		
-		}	
+			}
+		}
 	}
 }
