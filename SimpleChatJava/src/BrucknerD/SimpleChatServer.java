@@ -20,6 +20,8 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
+import java.util.ArrayList;
 
 
 /**
@@ -93,6 +95,15 @@ public class SimpleChatServer extends Application {
 
         border.setRight(vbox);
         border.setCenter(layout);
+
+        serverpage.setOnCloseRequest(e -> {
+            try {
+                closeProgramm();
+            } catch (InterruptedException e1) {
+                e1.printStackTrace();
+            }
+        });
+
         Scene scene = new Scene(border, 650,420);
         serverpage.setScene(scene);
         serverpage.show();
@@ -103,9 +114,15 @@ public class SimpleChatServer extends Application {
 
     }
 
-    public void showClients(String Client){
-        String outputs = clients.getText()+ Client + "\n";
-        clients.setText(outputs);
+    public void showClients(ArrayList<String> list_clients){
+        String output = "";
+        for(int i = 0; i < list_clients.size(); i++){
+            output = output + list_clients.get(i) + "\n";
+        }
+
+
+       // String outputs = clients.getText()+ Client + "\n";
+        clients.setText(output);
     }
 
 
@@ -114,6 +131,18 @@ public class SimpleChatServer extends Application {
         output.setText(outputs);
     }
 
+    public void closeProgramm() throws InterruptedException {
 
+        try {
+            c.server.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        c.r.join();
+
+        c.shutdown();
+        c.clientThread.join();
+    }
 
 }
