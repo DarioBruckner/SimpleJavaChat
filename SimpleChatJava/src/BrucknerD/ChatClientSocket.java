@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 
 import javax.swing.JFrame;
@@ -23,10 +24,10 @@ public class ChatClientSocket {
 	Socket client;
 	PrintWriter writer;
 	BufferedReader reader;
-	ClientFxGui fb;
-	ServerFxGui gui = ServerFxGui.getGui();
-	String [] args;
 	SimpleChatClient i;
+	Thread t;
+	static boolean running = true;
+
 	
 	public ChatClientSocket() {
 		
@@ -53,7 +54,7 @@ public class ChatClientSocket {
 			System.exit(0);
 		}
 		//Thread erstellen & Starten
-		Thread t = new Thread(new MessagefromServerListener());
+		t = new Thread(new MessagefromServerListener());
 		t.start();
 	
 	}
@@ -69,6 +70,7 @@ public class ChatClientSocket {
 		try {
 			//ClientSocket
 			client = new Socket("localhost", 5050);
+			client.setSoTimeout(5);
 			
 			//MessageReader
 			reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
@@ -105,15 +107,21 @@ public class ChatClientSocket {
 	 */
 	
 	public void sendtoserver(String input,String name) {
-		if(name.equals(null) || name.equals(" ")) {
-			name = "Noname";
-		}
-		
+
 		writer.write(name +": " + input + "\n");
 		writer.flush();
 		
 	}
-	
+
+
+	public void shutdown(String name){
+		String ruck = name+":EXIT";
+		sendtoserver("EXIT",name);
+		running = false;
+	}
+
+
+
 	/**
 	 * 
 	 * @author Dario
@@ -122,17 +130,20 @@ public class ChatClientSocket {
 	 * Thread um Nachrichten vom Server zu bekommen und diese auf der GUI anzuzeige
 	 */
 
-
-
-
 	public class MessagefromServerListener implements Runnable{
 
 		@Override
 		public void run() {
 			String mes;
-			
+
+
 			try {
-				while((mes = reader.readLine()) != null) {
+				while(running) {
+					try{
+						mes = reader.readLine();
+					}catch (SocketTimeoutException e) {
+						continue;
+					}
 					//Zeigt die Nachricht an
 					i.showtext(mes);
 
@@ -141,7 +152,7 @@ public class ChatClientSocket {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				i.showtext("FEHLER");
-				
+
 			}
 			
 		}
