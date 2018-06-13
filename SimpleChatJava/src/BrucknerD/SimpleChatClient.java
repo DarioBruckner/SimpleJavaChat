@@ -66,8 +66,11 @@ public class SimpleChatClient extends Application {
                 gclient.setEditable(false);
             }
         });
+        //User Eingabe => Nachricht
         ginput = new TextField();
+        //User Eingabe => Username
         gclient = new TextField();
+        //Nachrichten ausgabe
         output = new TextArea();
 
         FlowPane layout = new FlowPane();
@@ -88,6 +91,15 @@ public class SimpleChatClient extends Application {
         layout.getChildren().add(gclient);
         layout.getChildren().add(ginput);
         layout.getChildren().add(send);
+
+        clientpage.setOnCloseRequest(e -> {
+            try {
+                closeProgramm();
+            } catch (InterruptedException e1) {
+                e1.printStackTrace();
+            }
+        });
+
 
         Scene scene = new Scene(layout, 650,420);
         clientpage.setScene(scene);
@@ -123,6 +135,13 @@ public class SimpleChatClient extends Application {
 		}
 	}
 
+
+
+
+	public void closeProgramm() throws InterruptedException {
+        cl.shutdown(gclient.getText());
+	    cl.t.join();
+    }
 
 	
 	/**
