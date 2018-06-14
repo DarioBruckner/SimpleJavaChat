@@ -14,13 +14,10 @@ import javax.swing.JFrame;
 
 
 /**
- * 
  * @author Dario
  *
- * ChatClientSocket enthaelt alle Methoden furr das Senden und Empfangen der Nachrichten fuer Clients
- * 
- * 
- * 
+ * ChatClientSocket enthaelt alle Methoden furr das Senden und Empfangen der Nachrichten fuer Client
+ *
  */
 public class ChatClientSocket {
 	Socket client;
@@ -30,11 +27,20 @@ public class ChatClientSocket {
 	Thread t;
 	static boolean running = true;
 
-	
+	/**
+	 * Standartkonstruktor
+	 */
 	public ChatClientSocket() {
 		
 	}
-	
+
+	/**
+	 * @param i Reference zu SimpleChatClient
+	 *
+	 * Startet den Client
+	 *
+	 */
+
 	public ChatClientSocket(SimpleChatClient i) {
 		//cli = new ChatClientSocket();
 		this.i = i;
@@ -43,8 +49,6 @@ public class ChatClientSocket {
 	}
 	
 	/**
-	 * 
-	 *
 	 * 
 	 * oeffnet die GUI und Startet den MessageListener Thread
 	 * 
@@ -115,12 +119,21 @@ public class ChatClientSocket {
 		
 	}
 
+	/**
+	 * @param name name des Clients um ihn aus der ClientListe zu entfernen
+	 *
+	 * Beendet die MessageListner Thread und beendet die Gui;
+	 */
 
 	public void shutdown(String name){
-		String ruck = name+":EXIT";
 		sendtoserver("EXIT",name);
 		running = false;
 	}
+
+	/**
+	 * Wird aufgrufen wenn der Server sich schlie?t um die Gui zu beenden
+	 */
+
 
 	public void shutdownServer(){
 
@@ -160,7 +173,6 @@ public class ChatClientSocket {
 				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
 				i.showtext("FEHLER");
 
 			}

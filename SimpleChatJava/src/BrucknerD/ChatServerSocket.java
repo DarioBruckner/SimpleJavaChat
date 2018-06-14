@@ -53,8 +53,10 @@ public class ChatServerSocket {
 	public ChatServerSocket(SimpleChatServer serv) {
 		this.serv = serv;
 
+		//checks if server was started
 		if(server()) {
 
+			//starts thread to accept clients
 			acceptclients();
 	  	}else {
 	  		System.exit(0);
@@ -62,7 +64,7 @@ public class ChatServerSocket {
 	}
 	
 	/**
-	 * @param /
+	 *
 	 * @return True: Wenn Server richtig gestartet werden konnte False: Falls es einen Fehler gab
 	 * 
 	 * Methode zum Starten des Servers und initalisierung der list_clientWriter
@@ -92,18 +94,14 @@ public class ChatServerSocket {
 	
 	
 	/**
-	 * @param /
-	 * @return void
-	 * 
-	 * Methode um die Clients die mit dem Server verbunden sind in eine ArrayList zu speichern
+	 * Methode um einen Thread zu starten um die Clients die mit dem Server verbunden sind in eine ArrayList zu speichern
 	 * und den clientThread zu starten
 	 * 
 	 */
 	
 	public void acceptclients() {
 
-
-
+		//thread
 		r = new Thread() {
 			@Override
 			public void run() {
@@ -137,8 +135,7 @@ public class ChatServerSocket {
 	
 	
 	/**
-	 * @param message
-	 * @return void
+	 * @param message die an die Clients geschickt werden soll
 	 * 
 	 * Methode um die von Clienthandler empfangene Nachrichten an alle Clients in der 
 	 * list_clientWriter Liste zu senden. 
@@ -148,7 +145,7 @@ public class ChatServerSocket {
 	
 	public void sendtoClients(String message) {
 		
-		
+		//Iterator um die Liste nach PritWritern zu checken
 		Iterator<PrintWriter> it = list_clientWriter.iterator();
 		while(it.hasNext()) {
 			
@@ -156,16 +153,32 @@ public class ChatServerSocket {
 			PrintWriter writer = (PrintWriter) it.next();
 			writer.println(message);
 			
-			//Nachricht an den Outputstream geschickt
+			//Nachricht an den Outputstream schicken
 			writer.flush();
 		}
 	
 	}
-	
+
+
+	/**
+	 * @param message Message vom client
+	 * @return ret Rueckgabe mit name des clients
+	 *
+	 * Filtert in der Nachricht nach dem Sender
+	 *
+	 */
+
+
 	
 	public String clientFilter(String message) {
+
+		//return wert
 		String ret = "";
+
+		//zählt wie viele Zeichen der Client lang ist
 		int counter = 0;
+
+		//sucht nach der Stelle in der Nachricht, bei der der Client aufhört
 		for(int i = 0; message.length() > i; i++) {
 			char c = message.charAt(i);
 			counter++;
@@ -174,19 +187,27 @@ public class ChatServerSocket {
 				counter--;
 			}
 		}
-		
+
+		//Fügt die Chars zur rueckgabe hinzu
 		for (int ii = 0; ii < counter; ii++) {
 			char c = message.charAt(ii);
 			ret += c;
 		}
 		if(!list_clients.contains(ret)) {
+
+			//Fügt den Client in die Liste
 			list_clients.add(ret);
+
+			//Showing the new clients on server
 			serv.showClients(list_clients);
 		}
 
 		return ret;
 	}
 
+	/**
+	 * Wird verwendet um den Clienthandler Thread zu stoppen
+	 */
 	public void shutdown(){
 		running = false;
 	}
@@ -241,10 +262,12 @@ public class ChatServerSocket {
 							continue;
 						}
 						//An alle Clients die erhaltene Nachricht
+
 						if (!mes.equals(clientdel + ": EXIT")) {
 							sendtoClients(mes);
 							clientFilter(mes);
 							serv.texttogui(mes);
+						//um die Clientthreads zu Beenden
 						} else if(mes.equals(clientdel + ": EXIT")) {
 							list_clients.remove(clientdel);
 							serv.showClients(list_clients);

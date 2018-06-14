@@ -40,6 +40,11 @@ public class SimpleChatServer extends Application {
     ChatServerSocket c;
     SimpleChatServer serv;
 
+    /**
+     * @param args
+     *
+     * Main Methode
+     */
     public static void main(String [] args){
 
 		//SimpleChatServer p = new SimpleChatServer();
@@ -49,6 +54,13 @@ public class SimpleChatServer extends Application {
 
 	}
 
+    /**
+     * @param serverpage Die Gui
+     * @throws Exception
+     *
+     * Started die Gui und den Server
+     *
+     */
     @Override
     public void start(Stage serverpage) throws Exception {
         serverpage.setTitle("server");
@@ -114,6 +126,12 @@ public class SimpleChatServer extends Application {
 
     }
 
+    /**
+     * @param list_clients Liste der Clients
+     *
+     * Gibt die Clients auf der Gui des Servers aus
+     */
+
     public void showClients(ArrayList<String> list_clients){
         String output = "";
         for(int i = 0; i < list_clients.size(); i++){
@@ -125,22 +143,40 @@ public class SimpleChatServer extends Application {
         clients.setText(output);
     }
 
+    /**
+     * @param input input from client
+     *
+     * Gibt den input auf der Gui des Servers aus
+     *
+     */
 
     public void texttogui(String input) {
         String outputs = output.getText() + input + "\n";
         output.setText(outputs);
     }
 
+    /**
+     * @throws InterruptedException
+     *
+     * Schließt das Programm und die Prozesse
+     */
+
     public void closeProgramm() throws InterruptedException {
+
+        //Beendet alle Clientprozzesse
         c.sendtoClients("EXIT");
+
         try {
             c.server.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+        //Beendet den acceptclients Thread
         c.r.join();
+
         c.shutdown();
+        //Beendet den Clienthandler thread
         try {
             c.clientThread.join();
         }catch(NullPointerException e){

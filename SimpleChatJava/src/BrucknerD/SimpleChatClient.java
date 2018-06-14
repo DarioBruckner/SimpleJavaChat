@@ -40,7 +40,12 @@ public class SimpleChatClient extends Application {
     private TextField ginput,gclient;
     private TextArea output;
     private ChatClientSocket cl;
-	
+
+    /**
+     * Main Methode
+     *
+     */
+
 	public static void main(String [] args){
 		
 		//Startet einen Client
@@ -49,6 +54,13 @@ public class SimpleChatClient extends Application {
 
 	}
 
+    /**
+     * @param clientpage Die GUI
+     * @throws Exception
+     *
+     * Started die Gui und den Client
+     *
+     */
     @Override
     public void start(Stage clientpage) throws Exception {
 
@@ -137,13 +149,19 @@ public class SimpleChatClient extends Application {
 	}
 
 
-
-
+    /**
+     * @throws InterruptedException
+     *
+     * Schließt das Programm und beendet den MessageListener Process
+     */
 	public void closeProgramm() throws InterruptedException {
         cl.shutdown(gclient.getText());
 	    cl.t.join();
     }
 
+    /**
+     * Beendet die Gui
+     */
     public void shutGUI(){
         Platform.exit();
     }
